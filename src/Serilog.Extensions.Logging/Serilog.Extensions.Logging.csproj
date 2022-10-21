@@ -4,7 +4,7 @@
     <Description>Low-level Serilog provider for Microsoft.Extensions.Logging</Description>
     <VersionPrefix>3.1.1</VersionPrefix>
     <Authors>Microsoft;Serilog Contributors</Authors>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net40;net45;netstandard2.0</TargetFrameworks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>Serilog.Extensions.Logging</AssemblyName>
@@ -23,12 +23,26 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\assets\serilog-extension-nuget.png" Pack="true" PackagePath="" />
+    <Compile Remove="LoggingBuilderExtensions.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Serilog" Version="2.9.0" />
+    <None Include="..\..\assets\serilog-extension-nuget.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="Serilog.PieroViano" Version="2.12.1" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45'">
+    <PackageReference Include="Serilog.PieroViano" Version="2.12.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net40'">
+    <PackageReference Include="Serilog.PieroViano" Version="2.12.1" />
+    <PackageReference Include="NetFx.Extensions.Logging" Version="2.2.0" />
   </ItemGroup>
 
 </Project>

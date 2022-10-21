@@ -19,16 +19,42 @@ using System.Collections.Generic;
 
 namespace Serilog.Extensions.Logging
 {
-    readonly struct SerilogLogValues : IReadOnlyList<KeyValuePair<string, object>>
+    readonly struct SerilogLogValues :
+#if NET40
+        IList<KeyValuePair<string, object>>
+#else
+        IReadOnlyList<KeyValuePair<string, object>>
+#endif
     {
         // Note, this struct is only used in a very limited context internally, so we ignore
         // the possibility of fields being null via the default struct initialization.
 
         private readonly MessageTemplate _messageTemplate;
-        private readonly IReadOnlyDictionary<string, LogEventPropertyValue> _properties;
+        private readonly
+#if NET40
+            IDictionary<string, LogEventPropertyValue> _properties;
+#else
+            IReadOnlyDictionary<string, LogEventPropertyValue> _properties;
+#endif
         private readonly KeyValuePair<string, object>[] _values;
+        /// <summary>
+        /// The is read only
+        /// </summary>
+        private readonly bool _isReadOnly;
 
-        public SerilogLogValues(MessageTemplate messageTemplate, IReadOnlyDictionary<string, LogEventPropertyValue> properties)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SerilogLogValues"/> struct.
+        /// </summary>
+        /// <param name="messageTemplate">The message template.</param>
+        /// <param name="properties">The properties.</param>
+        /// <exception cref="System.ArgumentNullException">messageTemplate</exception>
+        /// <exception cref="System.ArgumentNullException">properties</exception>
+        public SerilogLogValues(MessageTemplate messageTemplate,
+#if NET40
+            IDictionary<string, LogEventPropertyValue> properties)
+#else
+            IReadOnlyDictionary<string, LogEventPropertyValue> properties)
+#endif
         {
             _messageTemplate = messageTemplate ?? throw new ArgumentNullException(nameof(messageTemplate));
 
@@ -44,14 +70,63 @@ namespace Serilog.Extensions.Logging
                 ++i;
             }
             _values[i] = new KeyValuePair<string, object>("{OriginalFormat}", _messageTemplate.Text);
+            _isReadOnly = true;
         }
+
+        public int IndexOf(KeyValuePair<string, object> item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Insert(int index, KeyValuePair<string, object> item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveAt(int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(KeyValuePair<string, object> item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
 
         public KeyValuePair<string, object> this[int index]
         {
             get => _values[index];
+            set => _values[index] = value;
+        }
+
+        public bool Contains(KeyValuePair<string, object> item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CopyTo(KeyValuePair<string, object>[] array, int arrayIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Remove(KeyValuePair<string, object> item)
+        {
+            throw new NotImplementedException();
         }
 
         public int Count => _properties.Count + 1;
+
+        public bool IsReadOnly
+        {
+            get => _isReadOnly;
+            set => throw new NotImplementedException();
+        }
 
         public IEnumerator<KeyValuePair<string, object>> GetEnumerator() => ((IEnumerable<KeyValuePair<string, object>>)_values).GetEnumerator();
 

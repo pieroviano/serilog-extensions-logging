@@ -107,7 +107,11 @@ namespace Serilog.Extensions.Logging
                 }
 
                 var stateType = state.GetType();
-                var stateTypeInfo = stateType.GetTypeInfo();
+                var stateTypeInfo = stateType
+#if !NET40
+                        .GetTypeInfo()
+#endif
+                    ;
                 // Imperfect, but at least eliminates `1 names
                 if (messageTemplate == null && !stateTypeInfo.IsGenericType)
                 {
