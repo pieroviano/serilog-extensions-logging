@@ -7,11 +7,11 @@
     <TargetFrameworks>net40;net45;netstandard2.0</TargetFrameworks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <AssemblyName>Serilog.Extensions.Logging</AssemblyName>
+    <AssemblyName>Net4x.$(MSBuildProjectName)</AssemblyName>
     <AssemblyOriginatorKeyFile>../../assets/Serilog.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
-    <PackageId>Serilog.Extensions.Logging.PieroViano</PackageId>
+    <PackageId>$(AssemblyName)</PackageId>
     <PackageTags>serilog;Microsoft.Extensions.Logging</PackageTags>
     <PackageIcon>serilog-extension-nuget.png</PackageIcon>
     <PackageProjectUrl>https://github.com/serilog/serilog-extensions-logging</PackageProjectUrl>
@@ -21,6 +21,8 @@
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
     <RootNamespace>Serilog</RootNamespace>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
@@ -43,12 +45,12 @@
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="Serilog.PieroViano" Version="2.12.1" />
+    <PackageReference Include="Net4X.Serilog.PieroViano" Version="2.12.1" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45'">
-    <PackageReference Include="Serilog.PieroViano" Version="2.12.1" />
+    <PackageReference Include="Net4X.Serilog.PieroViano" Version="2.12.1" />
     <PackageReference Include="Net4x.Extensions.Logging" Version="2.2.0" />
     <PackageReference Include="Net4x.Extensions.Primitives" Version="2.2.0">
       <Aliases>ms</Aliases>
@@ -56,7 +58,7 @@
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net40'">
-    <PackageReference Include="Serilog.PieroViano" Version="2.12.1" />
+    <PackageReference Include="Net4X.Serilog.PieroViano" Version="2.12.1" />
     <PackageReference Include="Net4x.Extensions.Logging" Version="2.2.0" />
     <PackageReference Include="Net4x.Extensions.Primitives" Version="2.2.0">
       <Aliases>ms</Aliases>
