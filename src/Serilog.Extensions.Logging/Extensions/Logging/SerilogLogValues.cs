@@ -16,14 +16,19 @@ using Serilog.Events;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+#if NET45
+using IReadOnlyList =global::System.Collections.Generic.IReadOnlyList<System.Collections.Generic.KeyValuePair<string, object>>;
+#endif
 
 namespace Serilog.Extensions.Logging
 {
     readonly struct SerilogLogValues :
 #if NET40
         IList<KeyValuePair<string, object>>
+#elif NET45
+        IReadOnlyList
 #else
-        IReadOnlyList<KeyValuePair<string, object>>
+        System.Collections.Generic.IReadOnlyList<System.Collections.Generic.KeyValuePair<string, object>>
 #endif
     {
         // Note, this struct is only used in a very limited context internally, so we ignore

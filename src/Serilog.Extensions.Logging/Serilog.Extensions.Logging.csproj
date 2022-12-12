@@ -24,7 +24,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Net4x\**" />
+    <EmbeddedResource Remove="Net4x\**" />
+    <None Remove="Net4x\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="LoggingBuilderExtensions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Net4x\AsyncLocal.cs" />
+    <Compile Include="Net4x\AsyncLocalValueChangedArgs.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,12 +49,18 @@
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45'">
     <PackageReference Include="Serilog.PieroViano" Version="2.12.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="1.0.2" />
+    <PackageReference Include="Net4x.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="Net4x.Extensions.Primitives" Version="2.2.0">
+      <Aliases>ms</Aliases>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net40'">
     <PackageReference Include="Serilog.PieroViano" Version="2.12.1" />
-    <PackageReference Include="NetFx.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="Net4x.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="Net4x.Extensions.Primitives" Version="2.2.0">
+      <Aliases>ms</Aliases>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
