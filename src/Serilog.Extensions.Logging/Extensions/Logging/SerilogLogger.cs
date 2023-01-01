@@ -108,7 +108,7 @@ namespace Serilog.Extensions.Logging
 
                 var stateType = state.GetType();
                 var stateTypeInfo = stateType
-#if !NET40
+#if !NET40 && !NET35
                         .GetTypeInfo()
 #endif
                     ;

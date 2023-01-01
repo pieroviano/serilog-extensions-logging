@@ -23,7 +23,7 @@ using IReadOnlyList =global::System.Collections.Generic.IReadOnlyList<System.Col
 namespace Serilog.Extensions.Logging
 {
     readonly struct SerilogLogValues :
-#if NET40
+#if NET40 || NET35
         IList<KeyValuePair<string, object>>
 #elif NET45
         IReadOnlyList
@@ -36,7 +36,7 @@ namespace Serilog.Extensions.Logging
 
         private readonly MessageTemplate _messageTemplate;
         private readonly
-#if NET40
+#if NET40 || NET35
             IDictionary<string, LogEventPropertyValue> _properties;
 #else
             IReadOnlyDictionary<string, LogEventPropertyValue> _properties;
@@ -55,7 +55,7 @@ namespace Serilog.Extensions.Logging
         /// <exception cref="System.ArgumentNullException">messageTemplate</exception>
         /// <exception cref="System.ArgumentNullException">properties</exception>
         public SerilogLogValues(MessageTemplate messageTemplate,
-#if NET40
+#if NET40 || NET35
             IDictionary<string, LogEventPropertyValue> properties)
 #else
             IReadOnlyDictionary<string, LogEventPropertyValue> properties)

@@ -27,7 +27,7 @@ namespace Serilog.Extensions.Logging
     public class LoggerProviderCollection : IDisposable
     {
         private volatile ILoggerProvider[] _providers =
-#if NET45 || NET40
+#if NET45 || NET40 || NET35
             new ILoggerProvider[0];
 #else
             Array.Empty<ILoggerProvider>();

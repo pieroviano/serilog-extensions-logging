@@ -1,4 +1,4 @@
-﻿#if NET45 || NET40
+﻿#if NET45 || NET40 || NET35
 namespace System.Threading
 {
     /// <summary>Represents ambient data that is local to a given asynchronous control flow, such as an asynchronous method.</summary>

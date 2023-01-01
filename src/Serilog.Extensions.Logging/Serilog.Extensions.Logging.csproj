@@ -4,7 +4,7 @@
     <Description>Low-level Serilog provider for Microsoft.Extensions.Logging</Description>
     <VersionPrefix>3.1.1</VersionPrefix>
     <Authors>Microsoft;Serilog Contributors</Authors>
-    <TargetFrameworks>net40;net45;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net35;net40;net45;netstandard2.0</TargetFrameworks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>Net4x.$(MSBuildProjectName)</AssemblyName>
@@ -47,6 +47,15 @@
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="Net4x.Serilog" Version="2.12.1" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net35'">
+    <PackageReference Include="Net4X.Serilog" Version="2.12.1" />
+    <PackageReference Include="Net4x.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="Net4x.Extensions.Logging.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Net4x.Extensions.Primitives" Version="2.2.0">
+      <Aliases>ms</Aliases>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45'">
