@@ -23,6 +23,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageOutputPath>$(SolutionDir)Packages</PackageOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
