@@ -62,25 +62,25 @@
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net35'">
     <PackageReference Include="Net4X.Serilog" Version="2.12.1.*-*" />
-    <PackageReference Include="Net4x.Extensions.Logging" Version="2.2.0" />
-    <PackageReference Include="Net4x.Extensions.Logging.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Net4x.Extensions.Primitives" Version="2.2.0">
+    <PackageReference Include="Net4x.Extensions.Logging.Library" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)" />
+    <PackageReference Include="Net4x.Extensions.Logging.Abstractions" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)" />
+    <PackageReference Include="Net4x.Extensions.Primitives" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)">
       <Aliases>ms</Aliases>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45'">
     <PackageReference Include="Net4X.Serilog" Version="2.12.1.*-*" />
-    <PackageReference Include="Net4x.Extensions.Logging" Version="2.2.0" />
-    <PackageReference Include="Net4x.Extensions.Primitives" Version="2.2.0">
+    <PackageReference Include="Net4x.Extensions.Logging.Library" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)" />
+    <PackageReference Include="Net4x.Extensions.Primitives" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)">
       <Aliases>ms</Aliases>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net40'">
     <PackageReference Include="Net4x.Serilog" Version="2.12.1.*-*" />
-    <PackageReference Include="Net4x.Extensions.Logging" Version="2.2.0" />
-    <PackageReference Include="Net4x.Extensions.Primitives" Version="2.2.0">
+    <PackageReference Include="Net4x.Extensions.Logging.Library" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)" />
+    <PackageReference Include="Net4x.Extensions.Primitives" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)">
       <Aliases>ms</Aliases>
     </PackageReference>
   </ItemGroup>
