@@ -1,0 +1,8 @@
+<Project>
+  <Import Project="Directory.NuGet.props" Condition="'$(DirectoryNuGet)'==''" />
+  <PropertyGroup>
+    <VersionPrefix>$(SerilogExtensionsLoggingVersion)</VersionPrefix>
+    <VersionSuffix Condition="'$(Configuration)'!='Release'">0-at20230515042927</VersionSuffix>
+    <VersionSuffix Condition="'$(Configuration)'=='Release'">0</VersionSuffix>
+  </PropertyGroup>
+</Project>
