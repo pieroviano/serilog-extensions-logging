@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PackageOutputPath>$(SolutionDir)Packages/</PackageOutputPath>
@@ -10,7 +11,7 @@
   <PropertyGroup>
     <Description>Low-level Serilog provider for Microsoft.Extensions.Logging</Description>
     <SerilogExtensionsLoggingVersion Condition="'$(SerilogExtensionsLoggingVersion)' == ''">3.1.1</SerilogExtensionsLoggingVersion>
-        <Version>$(VersionPrefix).$(VersionSuffix)</Version>
+    <Version>$(VersionPrefix).$(VersionSuffix)</Version>
     <Authors>Microsoft;Serilog Contributors</Authors>
     <TargetFrameworks>net35;net40;net45;net461;netstandard2.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -35,31 +36,25 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageOutputPath>$(SolutionDir)Packages</PackageOutputPath>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="Net4x\**" />
     <EmbeddedResource Remove="Net4x\**" />
     <None Remove="Net4x\**" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Remove="LoggingBuilderExtensions.cs" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Include="Net4x\AsyncLocal.cs" />
     <Compile Include="Net4x\AsyncLocalValueChangedArgs.cs" />
   </ItemGroup>
-
   <ItemGroup>
     <None Include="..\..\assets\serilog-extension-nuget.png" Pack="true" PackagePath="" />
   </ItemGroup>
-
   <ItemGroup Condition=" '$(TargetFramework)' == 'net461' or '$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="Net4x.Serilog" Version="2.12.1.*-*" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="$(MicrosoftExtensionsLoggingVersion)" />
   </ItemGroup>
-
   <ItemGroup Condition=" '$(TargetFramework)' == 'net35'">
     <PackageReference Include="Net4X.Serilog" Version="2.12.1.*-*" />
     <PackageReference Include="Net4x.Extensions.Logging.Library" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)" />
@@ -68,7 +63,6 @@
       <Aliases>ms</Aliases>
     </PackageReference>
   </ItemGroup>
-
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45'">
     <PackageReference Include="Net4X.Serilog" Version="2.12.1.*-*" />
     <PackageReference Include="Net4x.Extensions.Logging.Library" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)" />
@@ -76,7 +70,6 @@
       <Aliases>ms</Aliases>
     </PackageReference>
   </ItemGroup>
-
   <ItemGroup Condition=" '$(TargetFramework)' == 'net40'">
     <PackageReference Include="Net4x.Serilog" Version="2.12.1.*-*" />
     <PackageReference Include="Net4x.Extensions.Logging.Library" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)" />
@@ -84,5 +77,4 @@
       <Aliases>ms</Aliases>
     </PackageReference>
   </ItemGroup>
-
 </Project>
