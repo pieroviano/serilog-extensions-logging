@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-16"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <PackageOutputPath>$(SolutionDir)Packages/</PackageOutputPath>
     </PropertyGroup>
-    <Import Project="$(UserProfile)\.nuget\packages\nugetutility\$(NuGetUtilityVersion)\build\NuGet.Utility.props" Condition="Exists('$(UserProfile)\.nuget\packages\nugetutility\$(NuGetUtilityVersion)\build\NuGet.Utility.props')" />
-    <Import Project="$(UserProfile)\.nuget\packages\nugetutility\$(NuGetUtilityVersion)\build\NuGet.Utility.targets" Condition="Exists('$(UserProfile)\.nuget\packages\nugetutility\$(NuGetUtilityVersion)\build\NuGet.Utility.targets')" />
+    <Import Condition="Exists('$(UserProfile)\.nuget\packages\nugetutility\$(NuGetUtilityVersion)\build\NuGet.Utility.props')" Project="$(UserProfile)\.nuget\packages\nugetutility\$(NuGetUtilityVersion)\build\NuGet.Utility.props" />
+    <Import Condition="Exists('$(UserProfile)\.nuget\packages\nugetutility\$(NuGetUtilityVersion)\build\NuGet.Utility.targets')" Project="$(UserProfile)\.nuget\packages\nugetutility\$(NuGetUtilityVersion)\build\NuGet.Utility.targets" />
     <ItemGroup>
-        <PackageReference Include="NuGetUtility" Version="$(NuGetUtilityVersion)" PrivateAssets="All" />
+        <PackageReference Include="NuGetUtility" PrivateAssets="All" Version="$(NuGetUtilityVersion)" />
     </ItemGroup>
     <PropertyGroup>
         <Description>Low-level Serilog provider for Microsoft.Extensions.Logging</Description>
@@ -50,23 +50,13 @@
         <None Include="..\..\assets\serilog-extension-nuget.png" Pack="true" PackagePath="" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Net4x.Serilog" Version="$(DapperLibrariesVersion).$(VersionBuildSuffix)" Condition=" '$(TargetFramework)' == 'net461' or '$(TargetFramework)' == 'netstandard2.0'" />
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="$(MicrosoftExtensionsLoggingVersion)" Condition=" '$(TargetFramework)' == 'net461' or '$(TargetFramework)' == 'netstandard2.0'" />
-        <PackageReference Include="Net4X.Serilog" Version="2.12.1.*-*" Condition=" '$(TargetFramework)' == 'net35'" />
-        <PackageReference Include="Net4x.Extensions.Logging.Library" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)" Condition=" '$(TargetFramework)' == 'net35'" />
-        <PackageReference Include="Net4x.Extensions.Logging.Abstractions" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)" Condition=" '$(TargetFramework)' == 'net35'" />
-        <PackageReference Include="Net4x.Extensions.Primitives" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)" Condition=" '$(TargetFramework)' == 'net35'">
+        <PackageReference Include="Microsoft.Extensions.Logging" Condition=" '$(TargetFramework)' == 'net461' or '$(TargetFramework)' == 'netstandard2.0'" Version="$(MicrosoftExtensionsLoggingVersion)" />
+        <PackageReference Include="Net4x.Extensions.Logging.Abstractions" Condition=" '$(TargetFramework)' == 'net35'" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)" />
+        <PackageReference Include="Net4x.Extensions.Logging.Library" Condition=" '$(TargetFramework)' == 'net35' or  '$(TargetFramework)' == 'net45' or  '$(TargetFramework)' == 'net40'" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)" />
+        <PackageReference Include="Net4x.Extensions.Primitives" Condition=" '$(TargetFramework)' == 'net35' or  '$(TargetFramework)' == 'net45' or  '$(TargetFramework)' == 'net40'" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)">
             <Aliases>ms</Aliases>
         </PackageReference>
-        <PackageReference Include="Net4X.Serilog" Version="2.12.1.*-*" Condition=" '$(TargetFramework)' == 'net45'" />
-        <PackageReference Include="Net4x.Extensions.Logging.Library" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)" Condition=" '$(TargetFramework)' == 'net45'" />
-        <PackageReference Include="Net4x.Extensions.Primitives" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)" Condition=" '$(TargetFramework)' == 'net45'">
-            <Aliases>ms</Aliases>
-        </PackageReference>
-        <PackageReference Include="Net4x.Serilog" Version="$(DapperLibrariesVersion).$(VersionBuildSuffix)" Condition=" '$(TargetFramework)' == 'net40'" />
-        <PackageReference Include="Net4x.Extensions.Logging.Library" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)" Condition=" '$(TargetFramework)' == 'net40'" />
-        <PackageReference Include="Net4x.Extensions.Primitives" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)" Condition=" '$(TargetFramework)' == 'net40'">
-            <Aliases>ms</Aliases>
-        </PackageReference>
+        <PackageReference Include="Net4x.Serilog" Condition=" '$(TargetFramework)' == 'net461' or '$(TargetFramework)' == 'netstandard2.0' or  '$(TargetFramework)' == 'net40'" Version="$(DapperLibrariesVersion).$(VersionBuildSuffix)" />
+        <PackageReference Include="Net4X.Serilog" Condition=" '$(TargetFramework)' == 'net35' or  '$(TargetFramework)' == 'net45'" Version="2.12.1.*-*" />
     </ItemGroup>
 </Project>
