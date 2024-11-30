@@ -2159,6 +2159,11 @@
         "Name": "Net4x.Serilog",
         "Project": "src\\Serilog\\Serilog.csproj",
         "PackageReferences": null
+      },
+      {
+        "Name": "Net4x.Serilog.Library",
+        "Project": "src\\Serilog\\Serilog.csproj",
+        "PackageReferences": null
       }
     ]
   },

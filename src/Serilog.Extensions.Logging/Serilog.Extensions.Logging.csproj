@@ -56,7 +56,7 @@
         <PackageReference Include="Net4x.Extensions.Primitives" Condition=" '$(TargetFramework)' == 'net35' or  '$(TargetFramework)' == 'net45' or  '$(TargetFramework)' == 'net40'" Version="$(Net4xExtensionsVersion).$(VersionBuildSuffix)">
             <Aliases>ms</Aliases>
         </PackageReference>
-        <PackageReference Include="Net4x.Serilog" Condition=" '$(TargetFramework)' == 'net461' or '$(TargetFramework)' == 'netstandard2.0' or  '$(TargetFramework)' == 'net40'" Version="$(DapperLibrariesVersion).$(VersionBuildSuffix)" />
-        <PackageReference Include="Net4X.Serilog" Condition=" '$(TargetFramework)' == 'net35' or  '$(TargetFramework)' == 'net45'" Version="2.12.1.*-*" />
+        <PackageReference Include="Net4x.Serilog.Library" Condition=" '$(TargetFramework)' == 'net461' or '$(TargetFramework)' == 'netstandard2.0' or  '$(TargetFramework)' == 'net40'" Version="$(DapperLibrariesVersion).$(VersionBuildSuffix)" />
+        <PackageReference Include="Net4X.Serilog.Library" Condition=" '$(TargetFramework)' == 'net35' or  '$(TargetFramework)' == 'net45'" Version="2.12.1.*-*" />
     </ItemGroup>
 </Project>
